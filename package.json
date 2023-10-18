@@ -1,0 +1,38 @@
+{
+  "name": "node-express",
+  "version": "1.0.0",
+  "description": "Backend Api-Rest nodejs",
+  "author": "ifonseca <ifonseca@evoluciondigital.com.co>",
+  "license": "MIT",
+  "main": "dist/app.js",
+  "engines": {
+    "node": ">=18.x.x",
+    "npm": ">=9.6.7"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/app.ts",
+    "start": "node dist/app.js",
+    "clean": "rimraf dist",
+    "test": "jest --watch",
+    "build": "npm run clean && tsc"
+  },
+  "keywords": [],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.4",
+    "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "copyfiles": "^2.4.1",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1"
+  }
+}

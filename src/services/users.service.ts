@@ -1,5 +1,6 @@
 import { User } from "../interfaces/user.interface";
 import UserModel from "../models/user.model";
+import { handleHttp } from "../utils/error.handle";
 
 const getUsers = async () => {
   const users = await UserModel.find();
@@ -11,7 +12,29 @@ const createUser = async (user: User) => {
   return userData;
 }
 
+const isMatchPassword = async (user: any, password: string) => {
+  return new Promise((resolve, reject) => {
+    user.comparePassword(password, function(err: any, isMatch: any) {
+      if (err) reject(err);
+      resolve(isMatch)
+    });
+  })
+}
+
+const login = async (credentials: any) => {
+  const user = await UserModel.findOne({ username: credentials.username });
+  if (!user) {
+    return { error: true, message: 'USER NOT FOUND' }
+  }
+  const matchPassword = await isMatchPassword(user, credentials.password);
+  if (matchPassword) {
+    return { error: false, user }
+  }
+  return { error: true, message: 'INVALID CREDENTIALS' }
+}
+
 export default {
   getUsers,
-  createUser
+  createUser,
+  login
 };

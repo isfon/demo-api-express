@@ -1,5 +1,7 @@
+import { User } from './user.interface'
+
 export interface Sistema {
-    users_id: number
+    user: User
     sensores_id: number
     place: string
   }

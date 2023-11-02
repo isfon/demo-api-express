@@ -3,10 +3,7 @@ import { Sistema } from "../interfaces/sistema.interface"
 
 const sistemaSchema = new Schema<Sistema>(
     {
-      users_id: {
-        type: Number,
-        required: true
-      },
+      user: { type: Schema.Types.ObjectId, ref: 'user' },
       sensores_id: {
         type: Number,
         required: true

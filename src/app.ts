@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', UsersRoutes)
-app.use('/api/sistema', SistemaRoutes)
+app.use('/api/sistemas', SistemaRoutes)
 
 db().then(() => console.log(`database connection is ready!`));
 app.listen(PORT, () => console.log(`api is listening on port ${PORT}`))

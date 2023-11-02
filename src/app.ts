@@ -6,9 +6,11 @@ import db from "./config/db";
 
 //import routes
 import UsersRoutes from './routes/users.routes'
+import SistemaRoutes from './routes/sistema.routes'
 
 interface IUserRequest extends express.Request {
   user: any
+  sistema: any
 }
 
 const PORT = process.env.PORT || 3000
@@ -33,6 +35,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', UsersRoutes)
+app.use('/api/sistema', SistemaRoutes)
 
 db().then(() => console.log(`database connection is ready!`));
 app.listen(PORT, () => console.log(`api is listening on port ${PORT}`))
